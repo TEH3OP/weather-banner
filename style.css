@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+}
+
+/* body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.weather-frame{
+    width: 290px;
+    background-color: #0b5b98;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+}
+
+[class^="column"]{
+    padding: 15px;
+    /* border: 1px solid tomato; */
+}
+
+.column-1{
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+
+.column-2{
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+#date{
+    font-size: 16px;
+}
+
+#time{
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+
+#wind{
+    margin: 10px 0;
+}
+
+.icon{
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#image{
+    width: 50px;
+    height: 50px;
+}
+
+#temperature{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#sky-state{
+    font-weight: bold;
+    text-align: center;
+}
+
+.time-of-update-frame{
+    display: flex;
+    margin: 10px 0;
+}
+
+#time-of-update{
+    flex: 1 0 auto;
+}
+
+#button-update{
+    flex: 0 1 auto;
+    min-width: 10px;
+    min-height: 10px;
+}
+ 
+#button-update:hover{
+    color: lightgray;
+}
+
+#button-update:active{
+    color: yellowgreen;
+} 
+
+
