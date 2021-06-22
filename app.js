@@ -9,10 +9,14 @@ let temperature = document.getElementById("temperature");
 let image = document.getElementById("image");
 let sky_state = document.getElementById("sky-state");
 let time_of_update = document.getElementById("time-of-update");
+let city = document.getElementById("city");
 // console.log(humidity);
+let selectCity = document.getElementById("city-selector");
 
 function updateData() {
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=KYIV&units=metric&APPID=5d066958a60d315387d9492393935c19")
+    let cityId = selectCity.value;
+    console.log(cityId);
+    fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&APPID=5d066958a60d315387d9492393935c19`)
         .then(receivedData => receivedData.json())
         .then(jsonData => {
             humidity.innerHTML = `Humidity: ${jsonData.main.humidity}%`;
@@ -25,14 +29,11 @@ function updateData() {
             temperature.innerHTML = `${jsonData.main.temp}°C`;
             sky_state.innerHTML = jsonData.weather[0].main;
             time_of_update.innerHTML = formatterDateTime.format(Date.now());
+            city.innerHTML = jsonData.name;
         }).catch((e) => {
             humidity.innerHTML = "---";
             pressure.innerHTML = "---";
             wind.innerHTML = "---";
-            let iconId = jsonData.weather[0].icon;
-            let iconAddress = `http://openweathermap.org/img/wn/${iconId}.png`;
-            image.setAttribute("src", iconAddress);
-
             temperature.innerHTML = "---";
             sky_state.innerHTML = "---";
         });
@@ -73,6 +74,8 @@ function updateTime() {
 
 let button = document.getElementById("button-update");
 button.addEventListener("click", updateData);
+selectCity.addEventListener("change", updateData);
+
 updateTime();
 updateData();
 autoUpdateTime();

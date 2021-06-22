@@ -80,14 +80,19 @@
     flex: 0 1 auto;
     min-width: 10px;
     min-height: 10px;
+    cursor: pointer;
 }
  
-#button-update:hover{
+/* #button-update:hover{
     color: lightgray;
-}
+} */
 
 #button-update:active{
     color: yellowgreen;
 } 
+
+#city-selector{
+    margin: 10px 0;
+}
 
 
