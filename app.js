@@ -16,14 +16,14 @@ let selectCity = document.getElementById("city-selector");
 function updateData() {
     let cityId = selectCity.value;
     console.log(cityId);
-    fetch(`http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&APPID=5d066958a60d315387d9492393935c19`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&APPID=5d066958a60d315387d9492393935c19`)
         .then(receivedData => receivedData.json())
         .then(jsonData => {
             humidity.innerHTML = `Humidity: ${jsonData.main.humidity}%`;
             pressure.innerHTML = `Pressure: ${jsonData.main.pressure}hPa`;
             wind.innerHTML = `Wind speed: ${jsonData.wind.speed}m/s`;
             let iconId = jsonData.weather[0].icon;
-            let iconAddress = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
+            let iconAddress = `https://openweathermap.org/img/wn/${iconId}@2x.png`;
             image.setAttribute("src", iconAddress);
 
             temperature.innerHTML = `${jsonData.main.temp}°C`;
