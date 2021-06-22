@@ -16,6 +16,13 @@ let selectCity = document.getElementById("city-selector");
 function updateData() {
     let cityId = selectCity.value;
     console.log(cityId);
+    humidity.innerHTML = "---";
+    pressure.innerHTML = "---";
+    wind.innerHTML = "---";
+    temperature.innerHTML = "---";
+    sky_state.innerHTML = "---";
+    city.innerHTML = "---";
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&APPID=5d066958a60d315387d9492393935c19`)
         .then(receivedData => receivedData.json())
         .then(jsonData => {
@@ -31,11 +38,7 @@ function updateData() {
             time_of_update.innerHTML = formatterDateTime.format(Date.now());
             city.innerHTML = jsonData.name;
         }).catch((e) => {
-            humidity.innerHTML = "---";
-            pressure.innerHTML = "---";
-            wind.innerHTML = "---";
-            temperature.innerHTML = "---";
-            sky_state.innerHTML = "---";
+            city.innerHTML = "Load error";
         });
 }
 
